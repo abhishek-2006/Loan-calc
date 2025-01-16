@@ -25,8 +25,8 @@ JavaScript: Core functionality.
 ## 🛠️ Installation
 
 1. Clone this repository to your local machine:
-
-git clone https://github.com/abhishek-2006/Loan-calc.git
+   ```bash
+   git clone https://github.com/abhishek-2006/Loan-calc.git
 
 2. Open the project folder and open the index.html file in your browser.
 
