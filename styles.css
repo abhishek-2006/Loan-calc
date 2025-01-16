@@ -1,0 +1,72 @@
+/* Body gradient background */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Calculator area styles */
+.calculator-container {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling with a 3D effect */
+.btn-primary {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    border: none;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 3D effect shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+.btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow when clicked */
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 100%; /* Increased opacity */
+    pointer-events: none; /* Prevent the bubble from blocking button click */
+    animation: bubbleEffect 1.5s ease-out forwards;
+}
+
+@keyframes bubbleEffect {
+    0% {
+        transform: scale(0) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translate(var(--x), var(--y)); /* Smaller size and random movement */
+        opacity: 1;
+    }
+}
+
+/* Input focus effects */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+/* Result box */
+.result {
+    border-left: 6px solid #4caf50;
+    background-color: rgba(240, 255, 240, 0.9);
+}
+
+.result p {
+    margin: 0;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}

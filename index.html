@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-r from-green-400 via-blue-300 to-indigo-400 flex items-center justify-center h-screen">
+
+    <div class="calculator-container bg-white/90 backdrop-blur-lg rounded-lg shadow-lg p-8 max-w-lg w-full border-t-4 border-green-500">
+        <div class="text-center mb-7">
+            <h1 class="text-4xl font-bold text-gray-800">Loan Calculator</h1>
+            <p class="text-base text-gray-600">Easily calculate your loan payments</p>
+        </div>
+        <form id="loan-form">
+            <div class="mb-6">
+                <label for="amount" class="form-label text-gray-700 text-lg">Loan Amount (₹)</label>
+                <input type="number" id="amount" class="form-control border border-green-300 focus:ring-2 focus:ring-green-500 rounded-lg text-lg" placeholder="Enter loan amount" required>
+            </div>
+            <div class="mb-6">
+                <label for="rate" class="form-label text-gray-700 text-lg">Interest Rate (%)</label>
+                <input type="number" id="rate" class="form-control border border-blue-300 focus:ring-2 focus:ring-blue-500 rounded-lg text-lg" placeholder="Enter interest rate" required>
+            </div>
+            <div class="mb-6">
+                <label for="time" class="form-label text-gray-700 text-lg">Duration</label>
+                <div class="d-flex">
+                    <input type="number" id="time-value" class="form-control border border-indigo-300 focus:ring-2 focus:ring-indigo-500 rounded-lg text-lg me-2" placeholder="Enter duration" required>
+                    <select id="time-unit" class="form-select border border-indigo-300 focus:ring-2 focus:ring-indigo-500 rounded-lg text-lg">
+                        <option value="days">Days</option>
+                        <option value="months" selected>Months</option>
+                        <option value="years">Years</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 mt-4 shadow-lg text-xl font-semibold py-2" id="loan-btn">Calculate</button>
+
+<script>
+// JavaScript to create the bubble effect on button click
+document.getElementById('loan-btn').addEventListener('click', function(e) {
+    const button = e.target;
+    
+    // Generate multiple bubbles
+    const numberOfBubbles = 25; // Increased number of bubbles to 20
+    for (let i = 0; i < numberOfBubbles; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+
+        // Set random size for each bubble (smaller size between 5px and 15px)
+        const size = Math.random() * 8 + 5; // Size between 5px and 15px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+
+        // Set random color for the bubble
+        const randomColor = `hsl(${Math.random() * 360}, 100%, 40%)`; // Random pastel colors
+        bubble.style.backgroundColor = randomColor;
+
+        // Set random movement direction
+        const x = (Math.random() - 0.5) * 300; // Horizontal movement
+        const y = (Math.random() - 0.5) * 300; // Vertical movement
+        bubble.style.setProperty('--x', `${x}px`);
+        bubble.style.setProperty('--y', `${y}px`);
+
+        // Position the bubble at the click location
+        const rect = button.getBoundingClientRect();
+        bubble.style.left = `${e.clientX - rect.left - size / 2}px`;
+        bubble.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+        // Append bubble to button
+        button.appendChild(bubble);
+
+        // Remove bubble after animation
+        bubble.addEventListener('animationend', () => {
+            bubble.remove();
+        });
+    }
+});
+</script>
+        </form>
+        <div class="result mt-6 p-4 rounded-lg shadow-inner bg-green-50">
+            <h3 class="text-xl font-semibold text-green-700 mb-5">Results</h3>
+            <p class="text-gray-800 text-xl">Monthly Payment: ₹<span id="monthly-payment"> 0.00</span></p>
+            <p class="text-gray-800 text-xl">Total Payment: ₹<span id="total-payment"> 0.00</span></p>
+            <p class="text-gray-800 text-xl">Total Interest: ₹<span id="total-interest"> 0.00</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
